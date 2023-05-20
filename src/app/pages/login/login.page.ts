@@ -11,7 +11,7 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     setTimeout(() => {
-      this.navCtrl.navigateRoot(["patient-status"], { replaceUrl: true });
+      this.navCtrl.navigateRoot(["patient-updates"], { replaceUrl: true });
     }, 2000);
   }
 }

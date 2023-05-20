@@ -4,15 +4,20 @@ import { PreloadAllModules, RouterModule, Routes } from "@angular/router";
 //Pages
 import { HomePage } from "./pages/home/home.page";
 import { LoginPage } from "./pages/login/login.page";
+import { PatientUpdatesPage } from "./pages/patient-updates/patient-updates.page";
 
 const routes: Routes = [
   {
     path: "home",
-    component: HomePage
+    component: HomePage,
   },
   {
     path: "login",
-    component: LoginPage
+    component: LoginPage,
+  },
+  {
+    path: "patient-updates",
+    component: PatientUpdatesPage,
   },
   {
     path: "",
