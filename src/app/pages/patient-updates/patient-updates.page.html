@@ -2,5 +2,10 @@
   <div id="container">
     <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img>
     <strong>Patient Updates</strong>
+    <ion-list>
+      <ion-item *ngFor="let update of patientUpdates">
+        <ion-label>{{update?.id}}</ion-label>
+      </ion-item>
+    </ion-list>
   </div>
 </ion-content>
