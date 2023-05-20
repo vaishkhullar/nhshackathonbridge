@@ -3,7 +3,7 @@ export const environment = {
   name: 'Local',
   version: '1.0.0',
 
-  api:{
-    rootURL: 'https://6464e58d228bd07b353c32fb.mockapi.io'
-  }
-}
+  api: {
+    rootURL: 'https://6468d24360c8cb9a2cb2da79.mockapi.io/',
+  },
+};

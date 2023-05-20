@@ -15,7 +15,7 @@ import {
   providedIn: 'root',
 })
 export class PatientStatusAPIService {
-  readonly apiEndpointName = 'patient-status';
+  readonly apiEndpointName = 'status';
 
   constructor(private http: HttpClient) {}
 
