@@ -46,9 +46,9 @@ export class PatientUpdatesPage implements OnInit {
     for (let i = 0; i < this.patientUpdates.length; i++) {
       const patientStatus: PatientStatus = this.patientUpdates[i];
       const index = this.accordianData.findIndex(
-        (e) => e.date === patientStatus.timestamp
+        (e) => new Date(e.date) === new Date(patientStatus.timestamp)
       );
-      if (index!=-1) {
+      if (index != -1) {
         this.accordianData[index].updates.push(patientStatus);
       } else {
         this.accordianData.push({
@@ -57,6 +57,6 @@ export class PatientUpdatesPage implements OnInit {
         });
       }
     }
-    this.accordianData.sort((a, b)=> new Date(b.date).getTime()-new Date(a.date).getTime())
+    //this.accordianData.sort((a, b)=> new Date(b.date).getTime()-new Date(a.date).getTime())
   }
 }

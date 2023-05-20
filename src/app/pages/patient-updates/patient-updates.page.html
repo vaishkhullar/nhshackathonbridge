@@ -10,22 +10,11 @@
         <div class="ion-padding" slot="content">
           <ion-card *ngFor="let update of dateEntry.updates">
             <ion-card-header>
-              <ion-card-title>Card Title</ion-card-title>
-              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+              <ion-card-title>Mood:{{update.mood}}</ion-card-title>
+              <ion-card-subtitle>Card Subtitle </ion-card-subtitle>
             </ion-card-header>
           
             <ion-card-content>
-              "mood": 87,
-              "timestamp": "2098-05-21T05:11:40.229Z",
-              "eating": "eating 1",
-              "drinking": "drinking 1",
-              "toilet": "toilet 1",
-              "mobility": "mobility 1",
-              "sleep": "sleep 1",
-              "fkSubmitter": "n",
-              "fkPatientId": 1,
-              "messageToFamily": "messageToFamily 1",
-              "id": "1"
               <ion-grid>
                 <ion-row>
                   <ion-col>Eating</ion-col>
@@ -35,20 +24,27 @@
                   <ion-col>Drinking</ion-col>
                   <ion-col>{{update.drinking}}</ion-col>
                 </ion-row>
+                <ion-row>
+                  <ion-col>Toilet</ion-col>
+                  <ion-col>{{update.toilet}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Mobility</ion-col>
+                  <ion-col>{{update.mobility}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Sleep</ion-col>
+                  <ion-col>{{update.sleep}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>MessageToFamily</ion-col>
+                  <ion-col>{{update.messageToFamily}}</ion-col>
+                </ion-row>
               </ion-grid>
             </ion-card-content>
           </ion-card>
         </div>
       </ion-accordion>
     </ion-accordion-group>
-    
-    <ion-list [inset]="true">
-      <ion-item *ngFor="let update of patientUpdates">
-        <ion-label>
-          <h3>Mood: {{update?.mood}}</h3>
-          <p>Eating: {{update?.eating}}</p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
   </div>
 </ion-content>
