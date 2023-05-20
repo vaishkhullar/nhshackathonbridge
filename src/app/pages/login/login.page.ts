@@ -7,11 +7,7 @@ import { NavController } from "@ionic/angular";
   styleUrls: ["./login.page.scss"],
 })
 export class LoginPage implements OnInit {
-  constructor(private navCtrl: NavController) {}
+  constructor() {}
 
-  ngOnInit() {
-    setTimeout(() => {
-      this.navCtrl.navigateRoot(["patient-updates"], { replaceUrl: true });
-    }, 2000);
-  }
+  ngOnInit() {}
 }
