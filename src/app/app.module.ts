@@ -5,6 +5,7 @@ import { IonicModule } from "@ionic/angular";
 import { AppComponent } from "./app.component";
 
 import { HttpClientModule } from "@angular/common/http";
+import { AppRoutingModule } from "./app-routing.module";
 
 @NgModule({
   imports: [
