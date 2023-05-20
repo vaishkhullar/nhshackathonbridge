@@ -22,7 +22,7 @@ export class PatientStatusAPIService {
   public getPatientStatus(patientId: number): Observable<PatientStatus[]> {
     return this.http.get<PatientStatus[]>(
       `${environment.api.rootURL}/api/${this.apiEndpointName}/`,
-      { params: { patientId } }
+      { params: { fkPatientId:patientId } }
     );
   }
 

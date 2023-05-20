@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { Subscription } from "rxjs";
+import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 //Models
-import { PatientStatus } from "src/app/models/patient-status.model";
+import { PatientStatus } from '../../models/patient-status.model';
 
 //Services
-import { PatientStatusAPIService } from "src/app/services/api/patient-status.service";
+import { PatientStatusAPIService } from '../../services/api/patient-status.service';
 
 @Component({
-  selector: "app-patient-updates",
-  templateUrl: "./patient-updates.page.html",
-  styleUrls: ["./patient-updates.page.scss"],
+  selector: 'app-patient-updates',
+  templateUrl: './patient-updates.page.html',
+  styleUrls: ['./patient-updates.page.scss'],
 })
 export class PatientUpdatesPage implements OnInit {
   private subscriptions: Subscription[] = [];
@@ -19,8 +19,8 @@ export class PatientUpdatesPage implements OnInit {
   constructor(private patientStatusAPI: PatientStatusAPIService) {}
 
   ngOnInit() {
-    console.log("Test");
-    this.fetchPatientStatusInformation(35);
+    console.log('Test');
+    this.fetchPatientStatusInformation(1);
   }
 
   ngOnDestroy() {
