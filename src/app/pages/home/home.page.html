@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Bridge</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Bridge</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <div id="container">
+    <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img>
+    <strong>Welcome</strong>
+    <ion-button color="primary" (click)="login()">
+      <ion-icon slot="start" name="log-in-sharp"></ion-icon>
+      Login
+    </ion-button>
+  </div>
+</ion-content>
