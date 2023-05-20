@@ -10,6 +10,7 @@ import { AppRoutingModule } from "./app-routing.module";
 //Pages
 import { HomePage } from "./pages/home/home.page";
 import { LoginPage } from "./pages/login/login.page";
+import { ClinicalPage } from "./pages/clinical/clinical.page";
 
 @NgModule({
   imports: [
@@ -19,7 +20,7 @@ import { LoginPage } from "./pages/login/login.page";
     HttpClientModule,
     AppRoutingModule,
   ],
-  declarations: [AppComponent,HomePage, LoginPage],
+  declarations: [AppComponent,HomePage, LoginPage, ClinicalPage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

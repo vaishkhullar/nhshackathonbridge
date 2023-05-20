@@ -2,11 +2,11 @@ import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-clinical',
+  templateUrl: 'clinical.page.html',
+  styleUrls: ['clinical.page.scss'],
 })
-export class HomePage {
+export class ClinicalPage {
   constructor(private navCtrl: NavController) {}
 
   public async login() {
