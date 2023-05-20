@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { environment } from '../../environments/environment';
 
 //Models
 import { PatientStatus } from '../../models/patient-status.model';
@@ -21,7 +20,7 @@ export class PatientUpdatesPage implements OnInit {
   constructor(private patientStatusAPI: PatientStatusAPIService) {}
 
   ngOnInit() {
-    this.fetchPatientStatusInformation(environment.patientId);
+    this.fetchPatientStatusInformation(1);
   }
 
   ngOnDestroy() {
@@ -49,14 +48,15 @@ export class PatientUpdatesPage implements OnInit {
       const index = this.accordianData.findIndex(
         (e) => e.date === patientStatus.timestamp
       );
-      if (index) {
+      if (index!=-1) {
         this.accordianData[index].updates.push(patientStatus);
       } else {
         this.accordianData.push({
-          date: patientStatus.timestamp,
+          date: new Date(patientStatus.timestamp),
           updates: [patientStatus],
         });
       }
     }
+    this.accordianData.sort((a, b)=> new Date(b.date).getTime()-new Date(a.date).getTime())
   }
 }

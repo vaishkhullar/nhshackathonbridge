@@ -3,23 +3,42 @@
     <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img>
     <strong>Patient Updates</strong>
     <ion-accordion-group>
-      <ion-accordion value="most-recent">
+      <ion-accordion *ngFor="let dateEntry of accordianData; let d = index" [value]="d">
         <ion-item slot="header" color="light">
-          <ion-label>First Accordion</ion-label>
+          <ion-label>{{dateEntry.date}}</ion-label>
         </ion-item>
-        <div class="ion-padding" slot="content">First Content</div>
-      </ion-accordion>
-      <ion-accordion value="second">
-        <ion-item slot="header" color="light">
-          <ion-label>Second Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Second Content</div>
-      </ion-accordion>
-      <ion-accordion value="third">
-        <ion-item slot="header" color="light">
-          <ion-label>Third Accordion</ion-label>
-        </ion-item>
-        <div class="ion-padding" slot="content">Third Content</div>
+        <div class="ion-padding" slot="content">
+          <ion-card *ngFor="let update of dateEntry.updates">
+            <ion-card-header>
+              <ion-card-title>Card Title</ion-card-title>
+              <ion-card-subtitle>Card Subtitle</ion-card-subtitle>
+            </ion-card-header>
+          
+            <ion-card-content>
+              "mood": 87,
+              "timestamp": "2098-05-21T05:11:40.229Z",
+              "eating": "eating 1",
+              "drinking": "drinking 1",
+              "toilet": "toilet 1",
+              "mobility": "mobility 1",
+              "sleep": "sleep 1",
+              "fkSubmitter": "n",
+              "fkPatientId": 1,
+              "messageToFamily": "messageToFamily 1",
+              "id": "1"
+              <ion-grid>
+                <ion-row>
+                  <ion-col>Eating</ion-col>
+                  <ion-col>{{update.eating}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Drinking</ion-col>
+                  <ion-col>{{update.drinking}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </div>
       </ion-accordion>
     </ion-accordion-group>
     
