@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-ward',
-  templateUrl: 'ward.page.html',
-  styleUrls: ['ward.page.scss'],
+  templateUrl: './ward.page.html',
+  styleUrls: ['./ward.page.scss'],
 })
-export class WardPage {
+export class WardPage implements OnInit {
   constructor(private navCtrl: NavController) {}
 
-  public async ward() {
-    await this.navCtrl.navigateRoot(['ward']);
+  ngOnInit() {
+    setTimeout(() => {
+      this.navCtrl.navigateRoot(['patient-status'], { replaceUrl: true });
+    }, 2000);
   }
 }

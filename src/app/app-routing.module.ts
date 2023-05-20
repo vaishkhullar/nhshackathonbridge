@@ -16,13 +16,13 @@ const routes: Routes = [
     component: LoginPage,
   },
   {
+    path: 'ward',
+    component: WardPage,
+  },
+  {
     path: '',
     redirectTo: 'home',
     pathMatch: 'full',
-  },
-  {
-    path: 'ward',
-    component: WardPage,
   },
   {
     path: '**',

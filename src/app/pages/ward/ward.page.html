@@ -1,17 +1,19 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Ward</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Bridge</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
   <div id="container">
     <ion-img class="logo" src="assets/img/logo.png" alt="Bridge"></ion-img>
-    <strong>Welcome</strong>
+    <strong>Successfully logged in</strong>
+    <ion-icon
+      class="icon-indicator"
+      color="success"
+      name="shield-checkmark"
+    ></ion-icon>
+    <ion-button
+      color="primary"
+      routerLink="/patient-status"
+      routerDirection="root"
+    >
+      <ion-icon slot="start" name="analytics-sharp"></ion-icon>
+      Patient Status
+    </ion-button>
   </div>
 </ion-content>
