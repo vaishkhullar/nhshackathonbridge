@@ -33,6 +33,7 @@ export class AppComponent implements OnInit, OnDestroy {
       .getPatientStatus(patientId)
       .subscribe((patientStatus: PatientStatus[]) => {
         if (patientStatus && patientStatus.length > 0) {
+          console.log(patientStatus);
           this.patientStatus = patientStatus[0];
         }
       });
