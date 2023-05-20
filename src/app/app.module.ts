@@ -7,6 +7,10 @@ import { AppComponent } from "./app.component";
 import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from "./app-routing.module";
 
+//Pages
+import { HomePage } from "./pages/home/home.page";
+import { LoginPage } from "./pages/login/login.page";
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -15,7 +19,7 @@ import { AppRoutingModule } from "./app-routing.module";
     HttpClientModule,
     AppRoutingModule,
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent,HomePage, LoginPage],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

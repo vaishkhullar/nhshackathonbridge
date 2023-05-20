@@ -20,7 +20,7 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
+              "src/app/assets",
               {
                 "glob": "**/*.svg",
                 "input": "node_modules/ionicons/dist/ionicons/svg",
@@ -111,7 +111,7 @@
             "karmaConfig": "src/karma.conf.js",
             "styles": ["styles.css"],
             "scripts": [],
-            "assets": ["src/favicon.ico", "src/assets"]
+            "assets": ["src/favicon.ico", "src/app/assets"]
           }
         },
         "lint": {
