@@ -35,8 +35,6 @@ export class PatientUpdatesPage implements OnInit {
         if (patientStatus && patientStatus.length > 0) {
           this.patientUpdates = patientStatus;
           this.processUpdatesIntoAccordian();
-          console.log('patientUpdates', this.patientUpdates);
-          console.log('accordianData', this.accordianData);
         }
       });
     if (!this.subscriptions.includes(patientStatusSub))
