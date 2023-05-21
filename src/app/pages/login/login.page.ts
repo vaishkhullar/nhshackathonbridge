@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 
 const pasNOKData = {
@@ -22,7 +22,8 @@ export class LoginPage implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private alertCtrl: AlertController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private loadingCtrl: LoadingController
   ) {
     this.loginForm = this.formBuilder.group({
       firstName: ['', Validators.compose([Validators.required])],
@@ -35,18 +36,38 @@ export class LoginPage implements OnInit {
   ngOnInit() {}
 
   public checkValidityFromPAS(): boolean {
-    return JSON.stringify(pasNOKData) === JSON.stringify(this.loginForm.value);
+    return (
+      JSON.stringify(pasNOKData).toLowerCase() ===
+      JSON.stringify(this.loginForm.value).toLowerCase()
+    );
+  }
+
+  async showLoading() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Dismissing after 3 seconds...',
+      duration: 3000,
+    });
+
+    loading.present();
   }
 
   public async moveToPatientUpdates() {
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading..',
+    });
+    loading.present();
     if (!this.checkValidityFromPAS()) {
       const alert = await this.alertCtrl.create({
         message: `NOK details not found/correct`,
         buttons: ['OK'],
       });
       await alert.present();
+      loading.dismiss();
     } else {
-      await this.navCtrl.navigateRoot(['patient-updates']);
+      setTimeout(() => {
+        loading.dismiss();
+        this.navCtrl.navigateRoot(['patient-updates']);
+      }, 2000);
     }
   }
 }
