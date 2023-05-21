@@ -1,0 +1,94 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Patient Updates</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="container">
+    <ion-chip>
+      <ion-icon name="pin-outline" color="primary"></ion-icon>
+      <ion-label>Location</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-label>Ward 2</ion-label>
+    </ion-chip>
+    <ion-img
+      class="logo"
+      src="https://i.imgur.com/gHoooAv.png"
+      alt="Bridge"
+    ></ion-img>
+    <strong>Patient Updates</strong>
+    <ion-accordion-group>
+      <ion-accordion
+        *ngFor="let dateEntry of accordianData; let d = index"
+        [value]="d"
+      >
+        <ion-item slot="header" color="light">
+          <ion-label>{{formatDateAsString(dateEntry.date, 'PPPP')}}</ion-label>
+        </ion-item>
+        <div class="ion-padding" slot="content">
+          <ion-card *ngFor="let update of dateEntry.updates">
+            <ion-card-content>
+              <ion-icon
+                class="icon-indicator"
+                [color]="(update.mood == 1) ? 'success' : (update.mood == 2) ? 'warning' : 'danger'"
+                [name]="(update.mood == 1) ? 'happy-outline' : (update.mood == 2) ? 'remove-outline' : 'sad-outline'"
+              ></ion-icon>
+              <ion-grid>
+                <ion-row>
+                  <ion-col>Eating</ion-col>
+                  <ion-col>{{update.eating}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Drinking</ion-col>
+                  <ion-col>{{update.drinking}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Toilet</ion-col>
+                  <ion-col>{{update.toilet}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Mobility</ion-col>
+                  <ion-col>{{update.mobility}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Sleep</ion-col>
+                  <ion-col>{{update.sleep}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>MessageToFamily</ion-col>
+                  <ion-col>{{update.messageToFamily}}</ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>Timestamp</ion-col>
+                  <ion-col>{{update.timestamp}}</ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-chip>
+      <ion-icon name="time-outline" color="primary"></ion-icon>
+      <ion-label>Opening Time</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-icon name="map-outline" color="primary"></ion-icon>
+      <ion-label>Map</ion-label>
+    </ion-chip>
+    <ion-chip>
+      <ion-icon name="information-circle-outline" color="primary"></ion-icon>
+      <ion-label>Info</ion-label>
+    </ion-chip>
+  </ion-toolbar>
+</ion-footer>

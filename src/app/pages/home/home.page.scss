@@ -1,0 +1,32 @@
+#container {
+  text-align: center;
+  padding: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 90%;
+
+  ion-img {
+    margin: 0 auto;
+    padding-top: 15%;
+  }
+
+  .logo {
+    max-width: 200px;
+    width: 60%;
+    margin-bottom: 32px;
+  }
+
+  strong {
+    font-size: 20px;
+    line-height: 26px;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 20px;
+  }
+}
