@@ -7,6 +7,7 @@ import { PatientStatus } from '../../models/patient-status.model';
 //Services
 import { PatientStatusAPIService } from '../../services/api/patient-status.service';
 import { format as formatDate } from 'date-fns';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-patient-updates',
@@ -18,9 +19,18 @@ export class PatientUpdatesPage implements OnInit {
   public patientUpdates: PatientStatus[] = [];
   public accordianData: { date: Date; updates: PatientStatus[] }[] = [];
 
-  constructor(private patientStatusAPI: PatientStatusAPIService) {}
+  public loadingSpinner: any = null;
 
-  ngOnInit() {
+  constructor(
+    private patientStatusAPI: PatientStatusAPIService,
+    private loadingCtrl: LoadingController
+  ) {}
+
+  async ngOnInit() {
+    this.loadingSpinner = await this.loadingCtrl.create({
+      message: 'Checking...',
+    });
+    this.loadingSpinner.present();
     this.fetchPatientStatusInformation(1);
   }
 
@@ -35,15 +45,16 @@ export class PatientUpdatesPage implements OnInit {
         if (patientStatus && patientStatus.length > 0) {
           this.patientUpdates = patientStatus;
           this.processUpdatesIntoAccordian();
+          this.loadingSpinner.dismiss();
         }
       });
     if (!this.subscriptions.includes(patientStatusSub))
       this.subscriptions.push(patientStatusSub);
   }
 
-  public formatDateAsString(date: Date, format?:string): string {
+  public formatDateAsString(date: Date, format?: string): string {
     if (date) {
-      return formatDate(new Date(date), (format)? format : 'dd/MM/yyyy');
+      return formatDate(new Date(date), format ? format : 'dd/MM/yyyy');
     }
   }
 
