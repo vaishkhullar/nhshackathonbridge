@@ -5,7 +5,7 @@
     <ion-accordion-group>
       <ion-accordion *ngFor="let dateEntry of accordianData; let d = index" [value]="d">
         <ion-item slot="header" color="light">
-          <ion-label>{{dateEntry.date}}</ion-label>
+          <ion-label>{{formatDateAsString(dateEntry.date, 'PPPP')}}</ion-label>
         </ion-item>
         <div class="ion-padding" slot="content">
           <ion-card *ngFor="let update of dateEntry.updates">

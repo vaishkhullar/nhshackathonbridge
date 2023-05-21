@@ -43,9 +43,9 @@ export class PatientUpdatesPage implements OnInit {
       this.subscriptions.push(patientStatusSub);
   }
 
-  public formatDateAsString(date: Date): string {
+  public formatDateAsString(date: Date, format?:string): string {
     if (date) {
-      return formatDate(new Date(date), 'dd/MM/yyyy');
+      return formatDate(new Date(date), (format)? format : 'dd/MM/yyyy');
     }
   }
 
