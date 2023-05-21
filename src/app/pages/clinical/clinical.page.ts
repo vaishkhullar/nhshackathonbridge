@@ -45,9 +45,20 @@ export class ClinicalPage implements OnInit {
   }
 
   public async insertPatientStatus() {
-    const patientStatusSub_ = this.patientWriteAPI.insertPatientStatus(
-      this.clinicianForm.value
-    );
+    this.patientWriteAPI
+      .insertPatientStatus(this.clinicianForm.value)
+      .subscribe((patientInfo: any) => {
+        // if (patientInfo && patientInfo.length > 0) {
+        //   console.log(patientInfo[0]);
+        //   this.myPatient = patientInfo[0];
+        // }
+        console.log(patientInfo);
+      });
+  }
+
+  public async updateHappiness(e) {
+    // console.log(e.target.value, 'hello');
+    this.clinicianForm.patchValue({ mood: e.target.value });
   }
 
   ngOnInit() {

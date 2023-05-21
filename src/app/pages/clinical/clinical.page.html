@@ -24,7 +24,7 @@
       </ion-col>
       <ion-col
         ><div>Ward Number:</div>
-        86
+        2
         <!-- {{myPatient.fkWard}} -->
       </ion-col>
     </ion-row>
@@ -57,7 +57,11 @@
                 >Mood
                 <div class="asterisk">&#42;</div></ion-label
               >
-              <ion-select aria-label="fruit" placeholder="Select fruit">
+              <ion-select
+                aria-label="mood"
+                placeholder="Select mood"
+                (ionChange)="updateHappiness($event)"
+              >
                 <ion-select-option value="1">Happy</ion-select-option>
                 <ion-select-option value="2">Ok</ion-select-option>
                 <ion-select-option value="3">Sad</ion-select-option>
@@ -168,10 +172,13 @@
           </ion-list>
         </form>
       </ion-col>
-      <ion-col class="patient-previous">
-        <div>Previous updates</div>
-      </ion-col>
-      <ion-button [disabled]="!clinicianForm.valid"> Submit </ion-button>
+      <ion-col class="patient-previous"> </ion-col>
+      <ion-button
+        [disabled]="!clinicianForm.valid"
+        (click)="insertPatientStatus()"
+      >
+        Submit
+      </ion-button>
     </ion-grid>
   </div>
 </ion-content>
