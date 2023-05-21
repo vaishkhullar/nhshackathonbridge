@@ -4,7 +4,8 @@ import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 
 const pasNOKData = {
-  firstName: 'Nick Rees',
+  firstName: 'Nick',
+  lastName: 'Rees',
   postcode: 'CF63 2NZ',
   telephone: '07748981774',
 };
@@ -25,8 +26,9 @@ export class LoginPage implements OnInit {
   ) {
     this.loginForm = this.formBuilder.group({
       firstName: ['', Validators.compose([Validators.required])],
+      lastName: ['', Validators.compose([Validators.required])],
       postcode: ['', Validators.compose([Validators.required])],
-      telephone: ['', Validators.compose([Validators.required])]
+      telephone: ['', Validators.compose([Validators.required])],
     });
   }
 
@@ -39,12 +41,12 @@ export class LoginPage implements OnInit {
   public async moveToPatientUpdates() {
     if (!this.checkValidityFromPAS()) {
       const alert = await this.alertCtrl.create({
-        message: `<strong>Error:</strong>Patient Details not found/correct`,
-        buttons: ['OK']
+        message: `NOK details not found/correct`,
+        buttons: ['OK'],
       });
       await alert.present();
     } else {
-      await this.navCtrl.navigateForward(['patient-updates']);
+      await this.navCtrl.navigateRoot(['patient-updates']);
     }
   }
 }

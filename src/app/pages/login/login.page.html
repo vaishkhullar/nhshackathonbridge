@@ -9,22 +9,29 @@
 
 <ion-content>
   <div id="container">
-    <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img>
+    <ion-img
+      class="logo"
+      src="https://imgur.com/a/URVHWGS"
+      alt="Bridge"
+    ></ion-img>
     <ion-icon
       class="icon-indicator"
       color="success"
       name="shield-checkmark"
     ></ion-icon>
+    <strong>Please provide your details as NOK</strong>
     <form [formGroup]="loginForm">
       <ion-list>
         <ion-item>
           <ion-label position="stacked"
-            >First Name<span class="asterisk">&#42;</span></ion-label>
+            >First Name<span class="asterisk">&#42;</span></ion-label
+          >
           <ion-input
             formControlName="firstName"
             type="text"
             autocapitalize="word"
             placeholder="e.g. John"
+            aria-label="firstName"
             ngDefaultControl
           >
           </ion-input>
@@ -37,11 +44,33 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked"
-            >Post Code<span class="asterisk">&#42;</span></ion-label>
+            >Last Name<span class="asterisk">&#42;</span></ion-label
+          >
+          <ion-input
+            formControlName="lastName"
+            type="text"
+            autocapitalize="word"
+            placeholder="e.g. Smith"
+            aria-label="lastName"
+            ngDefaultControl
+          >
+          </ion-input>
+          <ion-icon
+            *ngIf="loginForm.get('lastName').errors && (loginForm.get('lastName').touched || loginForm.get('lastName').dirty)"
+            color="danger"
+            name="information-circle"
+            slot="end"
+          ></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"
+            >Post Code<span class="asterisk">&#42;</span></ion-label
+          >
           <ion-input
             formControlName="postcode"
             type="text"
             autocapitalize="word"
+            aria-label="postcode"
             placeholder="e.g. CF63 2NZ"
             ngDefaultControl
           >
@@ -55,11 +84,13 @@
         </ion-item>
         <ion-item>
           <ion-label position="stacked"
-            >Telephone<span class="asterisk">&#42;</span></ion-label>
+            >Telephone<span class="asterisk">&#42;</span></ion-label
+          >
           <ion-input
             formControlName="telephone"
             type="text"
             autocapitalize="word"
+            aria-label="telephone"
             placeholder="e.g. 07748981774"
             ngDefaultControl
           >
@@ -74,9 +105,8 @@
       </ion-list>
     </form>
 
-    <ion-button
-      [disabled]="!loginForm.valid">
-      <ion-icon slot="start" name="analytics-sharp" (click)="moveToPatientUpdates()"></ion-icon>
+    <ion-button [disabled]="!loginForm.valid" (click)="moveToPatientUpdates()">
+      <ion-icon slot="start" name="analytics-sharp"></ion-icon>
       View Patient Updates
     </ion-button>
   </div>
