@@ -7,10 +7,15 @@
   </ion-toolbar>
   <ion-grid>
     <ion-row>
-      <ion-col>Name</ion-col>
-      <ion-col>DOB</ion-col>
-      <ion-col>MRN</ion-col>
-      <ion-col>Location</ion-col>
+      <ion-col
+        ><div>Patient:</div>
+        {{myPatient.firstName + " "+ myPatient.lastName}}
+      </ion-col>
+      <ion-col
+        ><div>DOB:</div>{{formatDateAsString(myPatient.dateOfBirth)}}</ion-col
+      >
+      <ion-col><div>NHS Number:</div>{{myPatient.nhsNumber}}</ion-col>
+      <ion-col><div>Ward Number:</div> {{myPatient.fkWard}}</ion-col>
       <ion-col>Search</ion-col>
     </ion-row>
   </ion-grid>
@@ -38,7 +43,7 @@
 
             <ion-item>
               <ion-label position="stacked"
-                >Mood<span class="asterisk">&#42;</span></ion-label
+                >Mood<div class="asterisk">&#42;</div></ion-label
               >
               <ion-select aria-label="fruit" placeholder="Select fruit">
                 <ion-select-option value="1">Happy</ion-select-option>
@@ -147,7 +152,7 @@
         </form>
       </ion-col>
       <ion-col class="patient-previous">
-        <span>Previous updates</span>
+        <div>Previous updates</div>
       </ion-col>
     </ion-grid>
   </div>

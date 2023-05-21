@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { PatientAPIService } from '../../services/api/patient.service';
 import { PatientInfo } from '../../models/patient-status.model';
-
+import { format as formatDate } from 'date-fns';
 // import { PatientStatusAPIService } from 'src/app/services/api/patient-status.service';
 
 @Component({
@@ -14,6 +14,8 @@ import { PatientInfo } from '../../models/patient-status.model';
 })
 export class ClinicalPage implements OnInit {
   public clinicianForm: FormGroup;
+  public myPatient: PatientInfo;
+
   constructor(
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
@@ -31,6 +33,12 @@ export class ClinicalPage implements OnInit {
     });
   }
 
+  public formatDateAsString(date: Date, format?: string): string {
+    if (date) {
+      return formatDate(new Date(date), format ? format : 'dd/MM/yyyy');
+    }
+  }
+
   public async clinical() {
     await this.navCtrl.navigateRoot(['forward']);
   }
@@ -42,7 +50,9 @@ export class ClinicalPage implements OnInit {
         if (patientInfo && patientInfo.length > 0) {
           // this.patientUpdates = patientStatus;
           // this.processUpdatesIntoAccordian();
-          console.log(patientInfo);
+
+          this.myPatient = patientInfo[0];
+          console.log(patientInfo[0]);
         }
       });
   }
