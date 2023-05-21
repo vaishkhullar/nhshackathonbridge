@@ -13,5 +13,13 @@ export type PatientStatus = {
 };
 
 export type PatientStatusCreateDTO = {
-  message: string;
+  mood: 1;
+  eating: string;
+  drinking: string;
+  toilet: string;
+  mobility: string;
+  sleep: string;
+  fkSubmitter: number;
+  fkPatientId: number;
+  messageToFamily: string;
 };

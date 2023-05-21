@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { PatientStatusAPIService } from 'src/app/services/api/patient-status.service';
 
 @Component({
   selector: 'app-clinical',
@@ -7,7 +8,10 @@ import { NavController } from '@ionic/angular';
   styleUrls: ['clinical.page.scss'],
 })
 export class ClinicalPage {
-  constructor(private navCtrl: NavController) {}
+  constructor(
+    private navCtrl: NavController,
+    private patientStatusAPI: PatientStatusAPIService
+  ) {}
 
   public async login() {
     await this.navCtrl.navigateRoot(['login']);
@@ -15,10 +19,17 @@ export class ClinicalPage {
   public async clinical() {
     await this.navCtrl.navigateRoot(['clinical']);
   }
+
+  // public async insertClinicalNotes() {
+  //   await this.patientStatusAPI.insertPatientStatus();
+  // }
 }
 
-//Models
-// import { Clinical } from '../../models/patient-status.model';
+// Models
+import {
+  PatientStatus,
+  PatientStatusCreateDTO,
+} from '../../models/patient-status.model';
 
 //Services
 // import { PatientStatusAPIService } from '../../services/api/patient-status.service';
