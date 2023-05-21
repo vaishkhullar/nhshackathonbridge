@@ -6,6 +6,7 @@ import { PatientStatus } from '../../models/patient-status.model';
 
 //Services
 import { PatientStatusAPIService } from '../../services/api/patient-status.service';
+import { format as formatDate } from 'date-fns';
 
 @Component({
   selector: 'app-patient-updates',
@@ -42,19 +43,29 @@ export class PatientUpdatesPage implements OnInit {
       this.subscriptions.push(patientStatusSub);
   }
 
+  public formatDateAsString(date: Date): string {
+    if (date) {
+      return formatDate(new Date(date), 'dd/MM/yyyy');
+    }
+  }
+
   private processUpdatesIntoAccordian() {
     for (let i = 0; i < this.patientUpdates.length; i++) {
       const patientStatus: PatientStatus = this.patientUpdates[i];
-      const index = this.accordianData.findIndex(
-        (e) => {
-          return new Date(e.date).getTime() == new Date(patientStatus.timestamp).getTime()
-        }
-      );
+      const index = this.accordianData.findIndex((e) => {
+        return (
+          this.formatDateAsString(e.date) ===
+          this.formatDateAsString(patientStatus.timestamp)
+        );
+      });
       if (index !== -1) {
         this.accordianData[index] = {
           date: new Date(patientStatus.timestamp),
-          updates: [... this.accordianData[index].updates, patientStatus].sort((a, b)=> new Date(b.timestamp).getTime()-new Date(a.timestamp).getTime()),
-        }
+          updates: [...this.accordianData[index].updates, patientStatus].sort(
+            (a, b) =>
+              new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+          ),
+        };
       } else {
         this.accordianData.push({
           date: new Date(patientStatus.timestamp),
@@ -62,6 +73,8 @@ export class PatientUpdatesPage implements OnInit {
         });
       }
     }
-    this.accordianData.sort((a, b)=> new Date(b.date).getTime()-new Date(a.date).getTime())
+    this.accordianData.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
   }
 }
