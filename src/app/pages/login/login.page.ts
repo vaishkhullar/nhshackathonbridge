@@ -53,7 +53,7 @@ export class LoginPage implements OnInit {
 
   public async moveToPatientUpdates() {
     const loading = await this.loadingCtrl.create({
-      message: 'Loading..',
+      message: 'Checking...',
     });
     loading.present();
     if (!this.checkValidityFromPAS()) {
@@ -61,8 +61,10 @@ export class LoginPage implements OnInit {
         message: `NOK details not found/correct`,
         buttons: ['OK'],
       });
-      await alert.present();
-      loading.dismiss();
+      setTimeout(() => {
+        loading.dismiss();
+        alert.present();
+      }, 2000);
     } else {
       setTimeout(() => {
         loading.dismiss();
