@@ -1,28 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Bridge</ion-title>
+  </ion-toolbar>
+  <ion-grid>
+    <ion-row>
+      <ion-col>Name</ion-col>
+      <ion-col>DOB</ion-col>
+      <ion-col>MRN</ion-col>
+      <ion-col>Location</ion-col>
+      <ion-col>Search</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
 <ion-content>
   <div id="container">
     <!-- <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img> -->
-    <ion-grid>
-      <ion-col>Hello</ion-col>
-      <ion-col>Hello1</ion-col>
-      <ion-col>Hello2</ion-col>
-      <ion-col>Hello 4</ion-col>
-    </ion-grid>
-    <ion-grid>
-      <ion-col>Search</ion-col>
-      <ion-col>Menu</ion-col>
-    </ion-grid>
 
     <ion-grid>
       <ion-col class="patient-update">
-        <form action="">
-          <span>Date</span>
-          <span>Today's mood:</span>
-          <span>Update to family</span>
+        <form [formGroup]="clinicianForm">
+          <ion-list>
+            <ion-label position="stacked">Date: </ion-label>
+            <ion-input formControlName='date' ></ion-input>
+          </ion-list>
         </form>
       </ion-col>
       <ion-col class="patient-previous">
         <span>Previous updates</span>
-        
       </ion-col>
     </ion-grid>
   </div>
