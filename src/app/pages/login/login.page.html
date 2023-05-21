@@ -19,17 +19,28 @@
     <form [formGroup]="loginForm">
       <ion-list>
         <ion-item>
-          <ion-label position="stacked">First Name<span class="asterisk">&#42;</span></ion-label>
+          <ion-label position="stacked"
+            >First Name<span class="asterisk">&#42;</span></ion-label
+          >
           <!-- <ion-textarea #hazardTextArea autocapitalize="sentences" rows="5" formControlName="hazardText" type="text"
             placeholder="Details about the hazard"
             (keyup.enter)="enterKeyPressed({formControlName:'hazardText', event: $event})"
             (keydown.Tab)="tabKeyPressed({formControlName:'hazardText', event: $event})" ngDefaultControl>
           </ion-textarea> -->
-          <ion-input formControlName="firstName" type="text" autocapitalize="word" placeholder="John"
-          ngDefaultControl>
+          <ion-input
+            formControlName="firstName"
+            type="text"
+            autocapitalize="word"
+            placeholder="John"
+            ngDefaultControl
+          >
+          </ion-input>
           <ion-icon
             *ngIf="loginForm.get('firstName').errors && (loginForm.get('firstName').touched || loginForm.get('firstName').dirty)"
-            color="danger" name="information-circle" slot="end"></ion-icon>
+            color="danger"
+            name="information-circle"
+            slot="end"
+          ></ion-icon>
         </ion-item>
       </ion-list>
     </form>
