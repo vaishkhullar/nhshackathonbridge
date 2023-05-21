@@ -23,3 +23,13 @@ export type PatientStatusCreateDTO = {
   fkPatientId: number;
   messageToFamily: string;
 };
+
+export type PatientInfo = {
+  firstName: string;
+  lastName: string;
+  dateOfBirth: Date;
+  mrn: number;
+  nhsNumber: string;
+  fkWard: number;
+  id: number;
+};

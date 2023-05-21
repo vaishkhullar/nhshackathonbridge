@@ -21,11 +21,128 @@
     <!-- <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img> -->
 
     <ion-grid>
+      <h2>Patient Update</h2>
       <ion-col class="patient-update">
         <form [formGroup]="clinicianForm">
           <ion-list>
-            <ion-label position="stacked">Date: </ion-label>
-            <ion-input formControlName='date' ></ion-input>
+            <ion-item>
+              <ion-label position="stacked">Date: </ion-label>
+              <ion-input
+                formControlName="date"
+                type="date"
+                autocapitalize="word"
+                placeholder="e.g. John"
+                ngDefaultControl
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked"
+                >Mood<span class="asterisk">&#42;</span></ion-label
+              >
+              <ion-select aria-label="fruit" placeholder="Select fruit">
+                <ion-select-option value="1">Happy</ion-select-option>
+                <ion-select-option value="2">Ok</ion-select-option>
+                <ion-select-option value="3">Sad</ion-select-option>
+              </ion-select>
+
+              <ion-icon
+                *ngIf="clinicianForm.get('mood').errors && (clinicianForm.get('mood').touched || clinicianForm.get('mood').dirty)"
+                color="danger"
+                name="information-circle"
+                slot="end"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Food and nutrition: </ion-label>
+              <ion-input
+                formControlName="food"
+                type="text"
+                autocapitalize="word"
+                placeholder="E.g. Ate breakfast and lunch"
+                ngDefaultControl
+              ></ion-input>
+
+              <ion-icon
+                *ngIf="clinicianForm.get('food').errors && (clinicianForm.get('food').touched || clinicianForm.get('food').dirty)"
+                color="danger"
+                name="information-circle"
+                slot="end"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Hydration and Fluids: </ion-label>
+              <ion-input
+                formControlName="drinking"
+                type="text"
+                autocapitalize="word"
+                placeholder="E.g. Still thirsty post operation"
+                ngDefaultControl
+              ></ion-input>
+
+              <ion-icon
+                *ngIf="clinicianForm.get('drinking').errors && (clinicianForm.get('drinking').touched || clinicianForm.get('drinking').dirty)"
+                color="danger"
+                name="information-circle"
+                slot="end"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Bowel habits: </ion-label>
+              <ion-input
+                formControlName="toilet"
+                type="text"
+                autocapitalize="word"
+                placeholder="E.g. Opened bowels twice"
+                ngDefaultControl
+              ></ion-input>
+
+              <ion-icon
+                *ngIf="clinicianForm.get('toilet').errors && (clinicianForm.get('toilet').touched || clinicianForm.get('toilet').dirty)"
+                color="danger"
+                name="information-circle"
+                slot="end"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Mobility: </ion-label>
+              <ion-input
+                formControlName="mobility"
+                type="text"
+                autocapitalize="word"
+                placeholder="E.g. Has taken a walk around the ward"
+                ngDefaultControl
+              ></ion-input>
+
+              <ion-icon
+                *ngIf="clinicianForm.get('mobility').errors && (clinicianForm.get('mobility').touched || clinicianForm.get('mobility').dirty)"
+                color="danger"
+                name="information-circle"
+                slot="end"
+              ></ion-icon>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked">Message to family: </ion-label>
+              <ion-input
+                formControlName="mobility"
+                type="text"
+                autocapitalize="word"
+                placeholder="E.g. Please can you bring patient some malteasers?"
+                ngDefaultControl
+              ></ion-input>
+
+              <ion-icon
+                *ngIf="clinicianForm.get('message').errors && (clinicianForm.get('message').touched || clinicianForm.get('message').dirty)"
+                color="danger"
+                name="information-circle"
+                slot="end"
+              ></ion-icon>
+            </ion-item>
           </ion-list>
         </form>
       </ion-col>
