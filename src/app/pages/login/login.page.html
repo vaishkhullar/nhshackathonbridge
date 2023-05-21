@@ -10,7 +10,6 @@
 <ion-content>
   <div id="container">
     <ion-img class="logo" src="assets/images/logo.png" alt="Bridge"></ion-img>
-    <strong>Successfully logged in</strong>
     <ion-icon
       class="icon-indicator"
       color="success"
@@ -20,18 +19,12 @@
       <ion-list>
         <ion-item>
           <ion-label position="stacked"
-            >First Name<span class="asterisk">&#42;</span></ion-label
-          >
-          <!-- <ion-textarea #hazardTextArea autocapitalize="sentences" rows="5" formControlName="hazardText" type="text"
-            placeholder="Details about the hazard"
-            (keyup.enter)="enterKeyPressed({formControlName:'hazardText', event: $event})"
-            (keydown.Tab)="tabKeyPressed({formControlName:'hazardText', event: $event})" ngDefaultControl>
-          </ion-textarea> -->
+            >First Name<span class="asterisk">&#42;</span></ion-label>
           <ion-input
             formControlName="firstName"
             type="text"
             autocapitalize="word"
-            placeholder="John"
+            placeholder="e.g. John"
             ngDefaultControl
           >
           </ion-input>
@@ -42,16 +35,49 @@
             slot="end"
           ></ion-icon>
         </ion-item>
+        <ion-item>
+          <ion-label position="stacked"
+            >Post Code<span class="asterisk">&#42;</span></ion-label>
+          <ion-input
+            formControlName="postcode"
+            type="text"
+            autocapitalize="word"
+            placeholder="e.g. CF63 2NZ"
+            ngDefaultControl
+          >
+          </ion-input>
+          <ion-icon
+            *ngIf="loginForm.get('postcode').errors && (loginForm.get('postcode').touched || loginForm.get('postcode').dirty)"
+            color="danger"
+            name="information-circle"
+            slot="end"
+          ></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"
+            >Telephone<span class="asterisk">&#42;</span></ion-label>
+          <ion-input
+            formControlName="telephone"
+            type="text"
+            autocapitalize="word"
+            placeholder="e.g. 07748981774"
+            ngDefaultControl
+          >
+          </ion-input>
+          <ion-icon
+            *ngIf="loginForm.get('telephone').errors && (loginForm.get('telephone').touched || loginForm.get('telephone').dirty)"
+            color="danger"
+            name="information-circle"
+            slot="end"
+          ></ion-icon>
+        </ion-item>
       </ion-list>
     </form>
 
     <ion-button
-      color="primary"
-      routerLink="/patient-updates"
-      routerDirection="forward"
-    >
-      <ion-icon slot="start" name="analytics-sharp"></ion-icon>
-      Patient Status
+      [disabled]="!loginForm.valid">
+      <ion-icon slot="start" name="analytics-sharp" (click)="moveToPatientUpdates()"></ion-icon>
+      View Patient Updates
     </ion-button>
   </div>
 </ion-content>

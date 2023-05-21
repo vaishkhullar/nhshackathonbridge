@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+
+const pasNOKData = {
+  firstName: 'Nick Rees',
+  postcode: 'CF63 2NZ',
+  telephone: '07748981774',
+};
 
 @Component({
   selector: 'app-login',
@@ -11,17 +18,33 @@ export class LoginPage implements OnInit {
   //Form Related
   public loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private alertCtrl: AlertController,
+    private navCtrl: NavController
+  ) {
     this.loginForm = this.formBuilder.group({
       firstName: ['', Validators.compose([Validators.required])],
+      postcode: ['', Validators.compose([Validators.required])],
+      telephone: ['', Validators.compose([Validators.required])]
     });
-    console.log(this.loginForm.value);
   }
 
-  public insertUpdate(){
-    api.insert({
-      happy: this.loginForm.value["happy"]
-    })
-  }
   ngOnInit() {}
+
+  public checkValidityFromPAS(): boolean {
+    return JSON.stringify(pasNOKData) === JSON.stringify(this.loginForm.value);
+  }
+
+  public async moveToPatientUpdates() {
+    if (!this.checkValidityFromPAS()) {
+      const alert = await this.alertCtrl.create({
+        message: `<strong>Error:</strong>Patient Details not found/correct`,
+        buttons: ['OK']
+      });
+      await alert.present();
+    } else {
+      await this.navCtrl.navigateForward(['patient-updates']);
+    }
+  }
 }
