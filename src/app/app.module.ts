@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AppComponent } from './app.component';
 
@@ -19,6 +19,7 @@ import { PatientUpdatesPage } from './pages/patient-updates/patient-updates.page
     IonicModule.forRoot(),
     HttpClientModule,
     AppRoutingModule,
+    ReactiveFormsModule
   ],
   declarations: [AppComponent, HomePage, LoginPage, PatientUpdatesPage],
   bootstrap: [AppComponent],
