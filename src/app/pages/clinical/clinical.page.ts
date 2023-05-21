@@ -5,7 +5,7 @@ import { AlertController } from '@ionic/angular';
 import { PatientAPIService } from '../../services/api/patient.service';
 import { PatientInfo } from '../../models/patient-status.model';
 import { format as formatDate } from 'date-fns';
-// import { PatientStatusAPIService } from 'src/app/services/api/patient-status.service';
+import { PatientStatusAPIService } from '../../services/api/patient-status.service';
 
 @Component({
   selector: 'app-clinical',
@@ -20,7 +20,8 @@ export class ClinicalPage implements OnInit {
     private navCtrl: NavController,
     private formBuilder: FormBuilder,
     private alertCtrl: AlertController,
-    private patientAPI: PatientAPIService
+    private patientAPI: PatientAPIService,
+    private patientWriteAPI: PatientStatusAPIService
   ) {
     this.clinicianForm = this.formBuilder.group({
       date: ['', Validators.compose([Validators.required])],
@@ -40,7 +41,13 @@ export class ClinicalPage implements OnInit {
   }
 
   public async clinical() {
-    await this.navCtrl.navigateRoot(['forward']);
+    await this.navCtrl.navigateRoot(['clinical']);
+  }
+
+  public async insertPatientStatus() {
+    const patientStatusSub_ = this.patientWriteAPI.insertPatientStatus(
+      this.clinicianForm.value
+    );
   }
 
   ngOnInit() {
@@ -48,11 +55,8 @@ export class ClinicalPage implements OnInit {
       .getPatientInfo(1)
       .subscribe((patientInfo: PatientInfo[]) => {
         if (patientInfo && patientInfo.length > 0) {
-          // this.patientUpdates = patientStatus;
-          // this.processUpdatesIntoAccordian();
-
-          this.myPatient = patientInfo[0];
           console.log(patientInfo[0]);
+          this.myPatient = patientInfo[0];
         }
       });
   }

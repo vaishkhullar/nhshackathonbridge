@@ -9,14 +9,24 @@
     <ion-row>
       <ion-col
         ><div>Patient:</div>
-        {{myPatient.firstName + " "+ myPatient.lastName}}
+        Ben Porter
+        <!-- {{myPatient.firstName + " " + myPatient.lastName}} -->
       </ion-col>
       <ion-col
-        ><div>DOB:</div>{{formatDateAsString(myPatient.dateOfBirth)}}</ion-col
-      >
-      <ion-col><div>NHS Number:</div>{{myPatient.nhsNumber}}</ion-col>
-      <ion-col><div>Ward Number:</div> {{myPatient.fkWard}}</ion-col>
-      <ion-col>Search</ion-col>
+        ><div>DOB:</div>
+        11/02/1952
+        <!-- {{formatDateAsString(myPatient.dateOfBirth)}} -->
+      </ion-col>
+      <ion-col
+        ><div>NHS Number:</div>
+        PE 123 456 7890
+        <!-- {{myPatient.nhsNumber}} -->
+      </ion-col>
+      <ion-col
+        ><div>Ward Number:</div>
+        86
+        <!-- {{myPatient.fkWard}} -->
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-header>
@@ -38,12 +48,14 @@
                 autocapitalize="word"
                 placeholder="e.g. John"
                 ngDefaultControl
+                aria-label="date"
               ></ion-input>
             </ion-item>
 
             <ion-item>
               <ion-label position="stacked"
-                >Mood<div class="asterisk">&#42;</div></ion-label
+                >Mood
+                <div class="asterisk">&#42;</div></ion-label
               >
               <ion-select aria-label="fruit" placeholder="Select fruit">
                 <ion-select-option value="1">Happy</ion-select-option>
@@ -67,6 +79,7 @@
                 autocapitalize="word"
                 placeholder="E.g. Ate breakfast and lunch"
                 ngDefaultControl
+                aria-label="food"
               ></ion-input>
 
               <ion-icon
@@ -85,6 +98,7 @@
                 autocapitalize="word"
                 placeholder="E.g. Still thirsty post operation"
                 ngDefaultControl
+                aria-label="drinking"
               ></ion-input>
 
               <ion-icon
@@ -103,6 +117,7 @@
                 autocapitalize="word"
                 placeholder="E.g. Opened bowels twice"
                 ngDefaultControl
+                aria-label="toilet"
               ></ion-input>
 
               <ion-icon
@@ -119,6 +134,7 @@
                 formControlName="mobility"
                 type="text"
                 autocapitalize="word"
+                aria-label="mobility"
                 placeholder="E.g. Has taken a walk around the ward"
                 ngDefaultControl
               ></ion-input>
@@ -136,6 +152,7 @@
               <ion-input
                 formControlName="mobility"
                 type="text"
+                aria-label="mobility"
                 autocapitalize="word"
                 placeholder="E.g. Please can you bring patient some malteasers?"
                 ngDefaultControl
@@ -154,6 +171,7 @@
       <ion-col class="patient-previous">
         <div>Previous updates</div>
       </ion-col>
+      <ion-button [disabled]="!clinicianForm.valid"> Submit </ion-button>
     </ion-grid>
   </div>
 </ion-content>
