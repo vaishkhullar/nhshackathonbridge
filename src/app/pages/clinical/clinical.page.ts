@@ -3,7 +3,7 @@ import { NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
 import { PatientAPIService } from '../../services/api/patient.service';
-import { PatientInfo } from '../../models/patient-status.model';
+import { PatientInfo, PatientStatus, PatientStatusCreateDTO } from '../../models/patient-status.model';
 import { format as formatDate } from 'date-fns';
 import { PatientStatusAPIService } from '../../services/api/patient-status.service';
 
@@ -45,15 +45,21 @@ export class ClinicalPage implements OnInit {
   }
 
   public async insertPatientStatus() {
-    this.patientWriteAPI
-      .insertPatientStatus(this.clinicianForm.value)
-      .subscribe((patientInfo: any) => {
-        // if (patientInfo && patientInfo.length > 0) {
-        //   console.log(patientInfo[0]);
-        //   this.myPatient = patientInfo[0];
-        // }
-        console.log(patientInfo);
-      });
+    console.log(this.clinicianForm.value);
+    console.log(this.clinicianForm.valid);
+    const payload: PatientStatusCreateDTO = {
+      mood: this.clinicianForm.value["mood"],
+      lastName:
+    }
+    // this.patientWriteAPI
+    //   .insertPatientStatus(this.clinicianForm.value)
+    //   .subscribe((patientInfo: any) => {
+    //     // if (patientInfo && patientInfo.length > 0) {
+    //     //   console.log(patientInfo[0]);
+    //     //   this.myPatient = patientInfo[0];
+    //     // }
+    //     console.log(patientInfo);
+    //   });
   }
 
   public async updateHappiness(e) {
