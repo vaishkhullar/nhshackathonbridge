@@ -4,10 +4,10 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 
 const pasNOKData = {
-  firstName: 'Nick',
-  lastName: 'Rees',
-  postcode: 'CF63 2NZ',
-  telephone: '07748981775',
+  firstName: 'John',
+  lastName: 'Smith',
+  postcode: 'CF632NZ',
+  telephone: '01234567891',
 };
 
 @Component({
